@@ -29,6 +29,22 @@ const postSchema = {
 
 const Post = mongoose.model("Post", postSchema);
 
+const passwordSchema = {
+  password: String,
+};
+
+const Password = mongoose.model("Password", passwordSchema);
+
+// const password = new Password({
+//   password: process.env.LOG_PASS,
+// });
+
+// password.save(function (err) {
+//   if (err) {
+//     console.log(err);
+//   }
+// });
+
 //
 
 app.get("/", function (req, res) {
@@ -61,17 +77,22 @@ app.get("/login", function (req, res) {
 
 app.post("/login", function (req, res) {
   const field = req.body.authent;
-  const pass = process.env.LOG_PASS;
 
-  if (field === pass) {
-    Post.find({}, function (err, posts) {
-      res.render("blogger", {
-        posts: posts,
-      });
-    });
-  } else {
-    res.redirect("/login");
-  }
+  Password.findOne({}, function (err, pass) {
+    if (err) {
+      console.log(err);
+    } else if (pass) {
+      if (field === pass.password) {
+        Post.find({}, function (err, posts) {
+          res.render("blogger", {
+            posts: posts,
+          });
+        });
+      } else {
+        res.redirect("/login");
+      }
+    }
+  });
 });
 
 app.post("/compose", function (req, res) {
