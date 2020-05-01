@@ -1,0 +1,131 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.title a {
+  text-decoration: none;
+  font-size: 30px;
+  color: rgb(43, 43, 43);
+  font-weight: bolder;
+}
+
+.title a:hover {
+  color: #777;
+}
+
+#intro {
+  width: 70%;
+  font-size: 20px;
+  font-weight: bold;
+  opacity: 0.8;
+  padding: 15px;
+}
+
+#logo {
+  background-image: url("images/logo.png");
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
+
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+.navbar-nav li a:hover {
+  color: #1abc9c !important;
+}
+
+.home,
+.login {
+  text-align: center;
+  padding: 30px;
+}
+
+.login p {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.posts,
+.postPage {
+  margin: 20px auto;
+  box-shadow: 0 0 5px grey;
+  border-radius: 7px;
+}
+
+.posts a {
+  text-decoration: none;
+  color: rgb(43, 43, 43);
+}
+
+.posts h1,
+.posts p,
+.postPage h1,
+.postPage p {
+  padding: 10px;
+}
+
+.postPage h1 {
+  text-align: center;
+}
+
+.posts h1 {
+  background-image: url("images/h1-bg.jpg");
+  color: #ffffff;
+  border-radius: 7px;
+}
+
+.composeBody {
+  min-height: 500px;
+}
+
+.idForm {
+  margin: 10px auto;
+}
+
+.blog-container {
+  margin-top: 20px;
+  text-align: center;
+  height: 100%;
+  background-color: #f8f8f8;
+  box-shadow: 3px 3px 3px lightgrey;
+  border-radius: 7px;
+  padding: 20px;
+}
+
+.editContainer {
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.editContainer textarea {
+  width: 100%;
+}
+
+.idForEditForm {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  height: 35px;
+  margin: 0 5px;
+}
+
+.idForEditForm textarea {
+  margin: 0 5px;
+}

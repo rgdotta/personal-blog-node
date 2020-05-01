@@ -1,0 +1,13 @@
+<%- include("partials/header"); -%>
+
+<div class="container login">
+  <div class="form-group">
+    <form action="/login" method="POST">
+      <p>Authentication:</p>
+      <input type="password" placeholder="Type Authentication" name="authent" />
+      <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+<%- include("partials/footer"); -%>
