@@ -22,7 +22,7 @@ Update:
 
 Delete:
 
-![](<public/css/images/blog-delete(1).png>)
+![](public/css/images/blog-delete(1).png)
 
 ## Authentication
 
@@ -30,17 +30,17 @@ The authentication is done with bcrypt and environment variables. Because of the
 
 ![](public/css/images/blog-authent.png)
 
-////
+----
 
 ![](public/css/images/blog-blogger.png)
 
-////
+----
 
 Edit:
 
 ![](public/css/images/blog-edit.png)
 
-////
+----
 
 Delete:
 
