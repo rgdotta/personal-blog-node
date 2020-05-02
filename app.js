@@ -204,14 +204,14 @@ app.post("/sendMail", function (req, res) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "contato.rgdev@gmail.com",
-      pass: "***",
+      user: process.env.FROM_MAIL,
+      pass: process.env.MAIL_PASS,
     },
   });
 
   const mailOptions = {
-    from: "contato.rgdev@gmail.com", // sender address
-    to: "rafaelgdotta@gmail.com", // list of receivers
+    from: process.env.FROM_MAIL, // sender address
+    to: process.env.TO_MAIL, // list of receivers
     subject: "Received message from personal blog.", // Subject line
     html: req.body.email + "<br>" + req.body.subject + "<br>" + req.body.text,
   };
