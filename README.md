@@ -8,7 +8,6 @@ All CRUD methods are aplied.
 
 Nest steps:
 
-- Add alert when mail is sent
 - Add info and links to resume, github and linkedin to footer
 - Add page limiter to home
 - Overall style

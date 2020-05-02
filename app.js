@@ -219,8 +219,9 @@ app.post("/sendMail", function (req, res) {
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
       console.log(err);
+      res.render("messageSent", { message: "Unable to send message" });
     } else {
-      res.redirect("/");
+      res.render("messageSent", { message: "Thank you. Message Sent!" });
     }
   });
 });
