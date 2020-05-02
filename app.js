@@ -8,6 +8,7 @@ const _ = require("lodash");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const nodemailer = require("nodemailer");
 
 const app = express();
 
@@ -194,6 +195,37 @@ app.post("/search", function (req, res) {
     }
   );
 });
+
+app.post("/sendMail", function (req, res) {
+  const from = process.env.FROM_MAIL;
+  const fromPass = process.env.MAIL_PASS;
+  const to = process.env.TO_MAIL;
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "contato.rgdev@gmail.com",
+      pass: "***",
+    },
+  });
+
+  const mailOptions = {
+    from: "contato.rgdev@gmail.com", // sender address
+    to: "rafaelgdotta@gmail.com", // list of receivers
+    subject: "Received message from personal blog.", // Subject line
+    html: req.body.email + "<br>" + req.body.subject + "<br>" + req.body.text,
+  };
+
+  transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/");
+    }
+  });
+});
+
+////////////
 
 app.listen(3000, function () {
   console.log("Server started on port 3000");

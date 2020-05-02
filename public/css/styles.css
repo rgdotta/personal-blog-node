@@ -98,7 +98,8 @@ html {
   margin: 10px auto;
 }
 
-.blog-container {
+.blog-container,
+.mailContainer {
   margin-top: 20px;
   text-align: center;
   height: 100%;
@@ -128,4 +129,21 @@ html {
 
 .idForEditForm textarea {
   margin: 0 5px;
+}
+
+.mailContainer {
+  box-shadow: 0 0 5px grey !important;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.mailContainer h2 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#contactLog {
+  font-size: 10px;
+  color: red;
 }
