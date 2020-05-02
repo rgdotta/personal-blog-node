@@ -14,10 +14,20 @@
         <div class="navbar-header">
           <p class="title navbar-brand"><a href="/">RGDOTTA DEVLOG</a></p>
         </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="resume"><a href="/resume">RESUME</a></li>
-          <li id="contact"><a href="/contact">CONTACT US</a></li>
-        </ul>
+        <div style="margin: 8px" class="nav navbar-nav navbar-right">
+              <form class="form-inline" action="search" method="POST">
+                <input
+                  class="form-control"
+                  type="search"
+                  placeholder="Search post"
+                  aria-label="Search"
+                  name="searchInput"
+                />
+                <button class="btn btn-primary" type="submit">
+                  Search
+                </button>
+              </form>
+            </div>
       </div>
     </nav>
 

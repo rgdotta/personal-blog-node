@@ -1,18 +1,4 @@
 <%- include("partials/header"); -%>
-<div style="margin-top: 20px;" class="container">
-  <form class="form-inline" action="search" method="POST">
-    <input
-      class="form-control"
-      type="search"
-      placeholder="Search post"
-      aria-label="Search"
-      name="searchInput"
-    />
-    <button class="btn btn-primary" type="submit">
-      Search
-    </button>
-  </form>
-</div>
 
 <% posts.forEach(function(post){ %>
 <div class="posts container">

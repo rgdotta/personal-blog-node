@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const app = express();
 
@@ -35,11 +37,18 @@ const passwordSchema = {
 
 const Password = mongoose.model("Password", passwordSchema);
 
-// const password = new Password({
-//   password: process.env.LOG_PASS,
-// });
+// Create password on first use
 
-// password.save(function (err) {
+// bcrypt.hash(process.env.LOG_PASS, saltRounds, function (err, hash) {
+//   const password = new Password({
+//     password: hash,
+//   });
+//   console.log(password);
+//   password.save(function (err) {
+//     if (err) {
+//       console.log(err);
+//     }
+//   });
 //   if (err) {
 //     console.log(err);
 //   }
@@ -82,15 +91,17 @@ app.post("/login", function (req, res) {
     if (err) {
       console.log(err);
     } else if (pass) {
-      if (field === pass.password) {
-        Post.find({}, function (err, posts) {
-          res.render("blogger", {
-            posts: posts,
+      bcrypt.compare(field, pass.password, function (err, result) {
+        if (result === true) {
+          Post.find({}, function (err, posts) {
+            res.render("blogger", {
+              posts: posts,
+            });
           });
-        });
-      } else {
-        res.redirect("/login");
-      }
+        }
+      });
+    } else {
+      res.redirect("/login");
     }
   });
 });
