@@ -44,7 +44,6 @@ const Password = mongoose.model("Password", passwordSchema);
 //   const password = new Password({
 //     password: hash,
 //   });
-//   console.log(password);
 //   password.save(function (err) {
 //     if (err) {
 //       console.log(err);
@@ -67,8 +66,6 @@ app.get("/", function (req, res) {
 
 app.get("/posts/:postId", function (req, res) {
   const requestedPostId = req.params.postId;
-
-  console.log(requestedPostId);
 
   Post.findOne({ _id: requestedPostId }, function (err, found) {
     res.render("post", {
