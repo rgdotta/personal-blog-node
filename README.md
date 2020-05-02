@@ -6,7 +6,11 @@ Personal blog project wrote in node.js and EJS, using MongoDB has database.
 
 ![](public/css/images/blog1.png)
 
-##All CRUD methods are aplied.
+## Post
+
+![](public/css/images/blog-post.png)
+
+## All CRUD methods are aplied.
 
 Create:
 
