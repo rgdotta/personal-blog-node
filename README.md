@@ -22,7 +22,7 @@ Update:
 
 Delete:
 
-![](public/css/images/blog-delete (1).png)
+![](public/css/images/blog-delete%20(1).png)
 
 ## Authentication
 
