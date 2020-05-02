@@ -10,6 +10,10 @@ Personal blog project wrote in node.js and EJS, using MongoDB has database.
 
 ![](public/css/images/blog-post.png)
 
+You can search by title or the post content.
+
+![](public/css/images/blog-search.png)
+
 ## All CRUD methods are aplied.
 
 Create:
