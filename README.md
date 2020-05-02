@@ -9,15 +9,19 @@ Personal blog project wrote in node.js and EJS, using MongoDB has database.
 ##All CRUD methods are aplied.
 
 Create:
+
 ![](public/css/images/blog-create.png)
 
 Read:
+
 ![](public/css/images/blog-read.png)
 
 Update:
+
 ![](public/css/images/blog-update.png)
 
 Delete:
+
 ![](<public/css/images/blog-delete(1).png>)
 
 ## Authentication
@@ -26,9 +30,19 @@ The authentication is done with bcrypt and environment variables. Because of the
 
 ![](public/css/images/blog-authent.png)
 
+////
+
 ![](public/css/images/blog-blogger.png)
 
+////
+
+Edit:
+
 ![](public/css/images/blog-edit.png)
+
+////
+
+Delete:
 
 ![](public/css/images/blog-delete.png)
 
