@@ -147,3 +147,10 @@ html {
   font-size: 10px;
   color: red;
 }
+
+
+#copyright {
+  width: 100%;
+  text-align: center;
+  opacity: 0.5;
+}
