@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 const nodemailer = require("nodemailer");
 
@@ -38,21 +38,25 @@ const passwordSchema = {
 
 const Password = mongoose.model("Password", passwordSchema);
 
-// Create password on first use
+// Create password on first use.
+// You have to create a LOG_PASS in the .env file where you will store the blogger authentication password.
+// Comment it out after the first app run.
 
-// bcrypt.hash(process.env.LOG_PASS, saltRounds, function (err, hash) {
-//   const password = new Password({
-//     password: hash,
-//   });
-//   password.save(function (err) {
-//     if (err) {
-//       console.log(err);
-//     }
-//   });
-//   if (err) {
-//     console.log(err);
-//   }
-// });
+bcrypt.genSalt(10, function (err, salt) {
+   bcrypt.hash(process.env.LOG_PASS, saltRounds, function (err, hash) {
+     const password = new Password({
+       password: hash,
+     });
+     password.save(function (err) {
+       if (err) {
+         console.log(err);
+       }
+     });
+     if (err) {
+       console.log(err);
+     }
+   });
+});
 
 //
 
@@ -75,6 +79,8 @@ app.get("/posts/:postId", function (req, res) {
     });
   });
 });
+
+//Blogger Authentication
 
 app.get("/login", function (req, res) {
   res.render("login");
@@ -104,6 +110,8 @@ app.post("/login", function (req, res) {
   });
 });
 
+//Compose the post
+
 app.post("/compose", function (req, res) {
   const post = new Post({
     title: req.body.postTitle,
@@ -120,6 +128,8 @@ app.post("/compose", function (req, res) {
 app.post("/newPost", function (req, res) {
   res.render("compose");
 });
+
+//Edit post
 
 app.post("/posts/edit", function (req, res) {
   const thisPostId = req.body.idForEdit;
@@ -149,6 +159,8 @@ app.post("/edit", function (req, res) {
   );
 });
 
+//Delete post
+
 app.post("/posts/delete", function (req, res) {
   const thisPostId = req.body.idForDelete;
 
@@ -171,6 +183,8 @@ app.post("/delete", function (req, res) {
   });
 });
 
+//Search by title or content parts
+
 app.post("/search", function (req, res) {
   const searchInput = req.body.searchInput;
 
@@ -192,6 +206,9 @@ app.post("/search", function (req, res) {
     }
   );
 });
+
+//Send e-mail with nodemail
+//it is required to create a FROM_MAIL and MAIL_PASS with the blog e-mail and a TO_MAIL, where the e-mail will be sent to, in the .env file.
 
 app.post("/sendMail", function (req, res) {
   const from = process.env.FROM_MAIL;
