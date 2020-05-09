@@ -8,7 +8,7 @@ Personal blog project wrote in node.js and EJS, using MongoDB has database.
 
 ## Post
 
-![](public/css/images/blog-post.png)
+![](public/css/images/blog-post1.png)
 
 You can search by title or the post content.
 
@@ -67,6 +67,5 @@ Mail message delivery using nodemail.
 This is still a work in progress, here is what is in my plans fot this project:
 
 - Add comment section.
-- Add info and links to resume, github and linkedin to footer.
 - Add page limiter to home.
 - Change overall style.
