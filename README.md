@@ -7,7 +7,7 @@ Personal blog developed on Node.js.
 On the designated folder, clone the repository in the terminal with the following code:
 
 ```
-$ git clone https://github.com/rgdotta/react-todoapp.git
+$ git clone https://github.com/rgdotta/personal-blog-node.git
 ```
 
 ### Install
