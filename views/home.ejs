@@ -1,23 +1,27 @@
 <%- include("partials/header"); -%>
 <div class="home container">
   <div id="logo"></div>
-  <img src="/public/css/images/logo.png" alt="" />
   <p class="posts" id="intro">
     Project development updates, games discussions, and other random things.
   </p>
 </div>
 
-<% posts.forEach(function(post){ %>
-<div class="posts container">
-  <a href="/posts/<%=post._id%>">
-    <h1><%=post.title%></h1>
-    <p>
-      <%-post.content.substring(0, 400) + " ..."%>
-    </p>
-  </a>
+<div class="postsContainer">
+  <% posts.forEach(function(post){ %>
+    <div class="posts container">
+      <a href="/posts/<%=post._id%>">
+        <h1><%=post.title%></h1>
+        <p>
+          <%-post.content.substring(0, 400) + " ..."%>
+        </p>
+      </a>
+    </div>
+  <% }) %>
 </div>
 
-<% }) %>
+<p class="pagination">
+  <a class="pagination__next" href="page2.html">Next page</a>
+</p>
 
 <div class="container mailContainer">
   <h2>Contact me:</h2>
@@ -61,4 +65,5 @@
   </form>
 </div>
 
+<script src="/js/infinite-scroll.pkgd.min.js"></script>
 <%- include("partials/footer"); -%>

@@ -1,6 +1,6 @@
 # PERSONAL BLOG NODE
 
-Personal blog developed on Node.js.
+Personal blog with comment section developed on Node.js.
 
 ## Download
 
@@ -40,8 +40,8 @@ The aplication will start on: https://localhost:3000/
 
 This is still a work in progress, here is what is in my plans fot this project:
 
-- Add comment section.
 - Add page limiter to home.
+- Overall css style.
 
 ## Screenshots
 

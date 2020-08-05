@@ -10,12 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "dotenv": "^8.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "infinite-scroll": "^3.0.6",
     "lodash": "^4.17.11",
     "mongoose": "^5.9.9",
-    "nodemailer": "^6.4.6"
+    "nodemailer": "^6.4.6",
+    "sessionstorage": "^0.1.0"
   }
 }

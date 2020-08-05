@@ -110,9 +110,15 @@ html {
 }
 
 .editContainer {
+  margin: 20px auto !important;
+  padding: 10px;
+  width: 80%;
   text-align: center;
   align-items: center;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
 }
 
 .editContainer textarea {
@@ -153,4 +159,72 @@ html {
   width: 100%;
   text-align: center;
   opacity: 0.5;
+}
+
+.makeComment{
+  margin: 40px auto auto auto;
+  padding: 20px;
+  width: 500px;
+  box-shadow: 0 0 5px grey;
+  border-radius: 7px;
+}
+
+.makeComment form {
+  display: flex;
+  flex-direction: column;
+}
+
+.makeComment h2 {
+  text-align: center;
+}
+
+.makeComment label {
+  margin-top: 10px;
+}
+
+.makeComment input, .makeComment textarea  {
+  border: 1px solid #ccc!important;
+  border-radius: 7px;
+}
+
+.commentInput {
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.inputSubmit {
+  margin: auto;
+  width: 100px;
+  height: 50px;
+}
+
+.commentList {
+  margin: auto;
+}
+
+.commentList h3 {
+  border-bottom: 1px solid #ccc;
+}
+
+.commentBox {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.commentBox p {
+  margin-left: 20px;
+}
+
+.commentBox h4 {
+  margin-bottom: 0;
+}
+
+.commentDashboard{
+  margin-top: 10px;
+}
+
+.commentDashboard input {
+  width: 20px;
+  height: 20px;
+  padding: 0;
 }

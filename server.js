@@ -9,13 +9,14 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 const nodemailer = require("nodemailer");
+const sessionstorage = require('sessionstorage');
 
 const app = express();
 
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static("assets"));
 
 mongoose.connect("mongodb://localhost:27017/blogDB", {
   useUnifiedTopology: true,
@@ -38,24 +39,32 @@ const passwordSchema = {
 
 const Password = mongoose.model("Password", passwordSchema);
 
+const commentSchema = {
+  postId: String,
+  user: String,
+  comment: String,
+};
+
+const Comment = mongoose.model("Comment", commentSchema);
+
 // Create password on first use.
 // You have to create a LOG_PASS in the .env file where you will store the blogger authentication password.
 // Comment it out after the first app run.
 
 bcrypt.genSalt(10, function (err, salt) {
-   bcrypt.hash(process.env.LOG_PASS, saltRounds, function (err, hash) {
-     const password = new Password({
-       password: hash,
-     });
-     password.save(function (err) {
-       if (err) {
-         console.log(err);
-       }
-     });
-     if (err) {
-       console.log(err);
-     }
-   });
+  bcrypt.hash(process.env.LOG_PASS, saltRounds, function (err, hash) {
+    const password = new Password({
+      password: hash,
+    });
+    password.save(function (err) {
+      if (err) {
+        console.log(err);
+      }
+    });
+    if (err) {
+      console.log(err);
+    }
+  });
 });
 
 //
@@ -70,12 +79,18 @@ app.get("/", function (req, res) {
 
 app.get("/posts/:postId", function (req, res) {
   const requestedPostId = req.params.postId;
+  let comments;
+
+  Comment.find({ postId: requestedPostId }, function (err, found) {
+    comments = found;
+  });
 
   Post.findOne({ _id: requestedPostId }, function (err, found) {
     res.render("post", {
       title: found.title,
       content: found.content,
       id: requestedPostId,
+      comments: comments,
     });
   });
 });
@@ -83,7 +98,7 @@ app.get("/posts/:postId", function (req, res) {
 //Blogger Authentication
 
 app.get("/login", function (req, res) {
-  res.render("login");
+ res.render("dashboard/login")
 });
 
 //
@@ -91,24 +106,41 @@ app.get("/login", function (req, res) {
 app.post("/login", function (req, res) {
   const field = req.body.authent;
 
-  Password.findOne({}, function (err, pass) {
-    if (err) {
-      console.log(err);
-    } else if (pass) {
-      bcrypt.compare(field, pass.password, function (err, result) {
-        if (result === true) {
-          Post.find({}, function (err, posts) {
-            res.render("blogger", {
-              posts: posts,
-            });
-          });
-        }
-      });
-    } else {
-      res.redirect("/login");
-    }
-  });
+  sessionstorage.setItem("password", field)
+
+  res.redirect("/dashboard")
 });
+
+//
+
+app.get("/dashboard", function(req, res) {
+  const auth = sessionstorage.getItem("password")
+
+  Password.findOne({}, function (err, pass) {
+      if (err) {
+        console.log(err);
+      } else if (pass) {
+        bcrypt.compare(auth, pass.password, function (err, result) {
+          if (result === true) {
+            let commentList;
+
+            Comment.find({}, function(err, comments){
+              commentList = comments;
+            })
+
+            Post.find({}, function (err, posts) {
+              res.render("dashboard/blogger", {
+                posts: posts,
+                comments: commentList,
+              });
+            });
+          }
+        });
+      } else {
+        res.redirect("/login");
+      }
+    });
+})
 
 //Compose the post
 
@@ -126,7 +158,7 @@ app.post("/compose", function (req, res) {
 });
 
 app.post("/newPost", function (req, res) {
-  res.render("compose");
+  res.render("dashboard/compose");
 });
 
 //Edit post
@@ -135,7 +167,7 @@ app.post("/posts/edit", function (req, res) {
   const thisPostId = req.body.idForEdit;
 
   Post.findOne({ _id: thisPostId }, function (err, found) {
-    res.render("edit", {
+    res.render("dashboard/edit", {
       title: found.title,
       content: found.content,
       id: thisPostId,
@@ -159,13 +191,13 @@ app.post("/edit", function (req, res) {
   );
 });
 
-//Delete post
+//Delete post and comments
 
 app.post("/posts/delete", function (req, res) {
   const thisPostId = req.body.idForDelete;
 
   Post.findOne({ _id: thisPostId }, function (err, found) {
-    res.render("delete", {
+    res.render("dashboard/delete", {
       id: thisPostId,
     });
   });
@@ -179,6 +211,16 @@ app.post("/delete", function (req, res) {
       console.log(err);
     } else {
       res.redirect("/");
+    }
+  });
+});
+
+app.post("/comment/delete", function (req, res) {
+  const commentId = req.body.commentForDelete;
+
+  Comment.findOneAndDelete({ _id: commentId }, function (err) {
+    if(!err){
+      res.redirect("/dashboard");
     }
   });
 });
@@ -207,6 +249,22 @@ app.post("/search", function (req, res) {
   );
 });
 
+//Comment
+
+app.post("/comment", function (req, res) {
+  const comment = new Comment({
+    postId: req.body.postId,
+    user: req.body.commenter,
+    comment: req.body.commentInput,
+  });
+
+  comment.save(function (err) {
+    if (!err) {
+      res.redirect(req.get('referer'));
+    }
+  });
+});
+
 //Send e-mail with nodemail
 //it is required to create a FROM_MAIL and MAIL_PASS with the blog e-mail and a TO_MAIL, where the e-mail will be sent to, in the .env file.
 
@@ -218,14 +276,14 @@ app.post("/sendMail", function (req, res) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.FROM_MAIL,
-      pass: process.env.MAIL_PASS,
+      user: from,
+      pass: fromPass,
     },
   });
 
   const mailOptions = {
-    from: process.env.FROM_MAIL, // sender address
-    to: process.env.TO_MAIL, // list of receivers
+    from: from, // sender address
+    to: to, // list of receivers
     subject: "Received message from personal blog.", // Subject line
     html: req.body.email + "<br>" + req.body.subject + "<br>" + req.body.text,
   };
