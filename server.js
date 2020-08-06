@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 const nodemailer = require("nodemailer");
-const sessionstorage = require('sessionstorage');
+const sessionstorage = require("sessionstorage");
 
 const app = express();
 
@@ -29,6 +29,7 @@ mongoose.connect("mongodb://localhost:27017/blogDB", {
 const postSchema = {
   title: String,
   content: String,
+  date: String,
 };
 
 const Post = mongoose.model("Post", postSchema);
@@ -43,6 +44,7 @@ const commentSchema = {
   postId: String,
   user: String,
   comment: String,
+  date: Date,
 };
 
 const Comment = mongoose.model("Comment", commentSchema);
@@ -67,14 +69,10 @@ bcrypt.genSalt(10, function (err, salt) {
   });
 });
 
-//
+// Home and Posts
 
 app.get("/", function (req, res) {
-  Post.find({}, function (err, posts) {
-    res.render("home", {
-      posts: posts,
-    });
-  });
+  res.redirect("/0");
 });
 
 app.get("/posts/:postId", function (req, res) {
@@ -82,76 +80,118 @@ app.get("/posts/:postId", function (req, res) {
   let comments;
 
   Comment.find({ postId: requestedPostId }, function (err, found) {
-    comments = found;
+    if (err) {
+      console.log(err);
+    } else {
+      comments = found;
+    }
   });
 
   Post.findOne({ _id: requestedPostId }, function (err, found) {
-    res.render("post", {
-      title: found.title,
-      content: found.content,
-      id: requestedPostId,
-      comments: comments,
-    });
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("post", {
+        title: found.title,
+        content: found.content,
+        id: requestedPostId,
+        comments: comments,
+      });
+    }
   });
 });
 
 //Blogger Authentication
 
 app.get("/login", function (req, res) {
- res.render("dashboard/login")
+  res.render("dashboard/login");
 });
-
-//
 
 app.post("/login", function (req, res) {
   const field = req.body.authent;
 
-  sessionstorage.setItem("password", field)
+  sessionstorage.setItem("password", field);
 
-  res.redirect("/dashboard")
+  res.redirect("/dashboard");
 });
 
-//
+// Dashboard
 
-app.get("/dashboard", function(req, res) {
-  const auth = sessionstorage.getItem("password")
+app.get("/dashboard", function (req, res) {
+  const auth = sessionstorage.getItem("password");
 
   Password.findOne({}, function (err, pass) {
-      if (err) {
-        console.log(err);
-      } else if (pass) {
-        bcrypt.compare(auth, pass.password, function (err, result) {
-          if (result === true) {
-            let commentList;
+    if (err) {
+      console.log(err);
+    } else if (pass) {
+      bcrypt.compare(auth, pass.password, function (err, result) {
+        if (result === true) {
+          let commentList;
 
-            Comment.find({}, function(err, comments){
+          Comment.find({}, function (err, comments) {
+            if (err) {
+              console.log(err);
+            } else {
               commentList = comments;
-            })
+            }
+          });
 
-            Post.find({}, function (err, posts) {
+          Post.find({}, function (err, posts) {
+            if (err) {
+              console.log(err);
+            } else {
               res.render("dashboard/blogger", {
                 posts: posts,
                 comments: commentList,
               });
-            });
-          }
-        });
-      } else {
-        res.redirect("/login");
-      }
-    });
-})
+            }
+          });
+        }
+      });
+    } else {
+      res.redirect("/login");
+    }
+  });
+});
 
 //Compose the post
+
+function getPostDate() {
+  const postDate = new Date();
+  const [day, month, year] = [
+    postDate.getDate(),
+    postDate.getMonth(),
+    postDate.getFullYear(),
+  ];
+  const monthNames = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
+  ];
+
+  return day + " de " + monthNames[month] + " de " + year;
+}
 
 app.post("/compose", function (req, res) {
   const post = new Post({
     title: req.body.postTitle,
     content: req.body.postBody,
+    date: getPostDate(),
   });
 
   post.save(function (err) {
-    if (!err) {
+    if (err) {
+      console.log(err);
+    } else {
       res.redirect("/");
     }
   });
@@ -167,11 +207,15 @@ app.post("/posts/edit", function (req, res) {
   const thisPostId = req.body.idForEdit;
 
   Post.findOne({ _id: thisPostId }, function (err, found) {
-    res.render("dashboard/edit", {
-      title: found.title,
-      content: found.content,
-      id: thisPostId,
-    });
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("dashboard/edit", {
+        title: found.title,
+        content: found.content,
+        id: thisPostId,
+      });
+    }
   });
 });
 
@@ -191,15 +235,19 @@ app.post("/edit", function (req, res) {
   );
 });
 
-//Delete post and comments
+//Delete post
 
 app.post("/posts/delete", function (req, res) {
   const thisPostId = req.body.idForDelete;
 
   Post.findOne({ _id: thisPostId }, function (err, found) {
-    res.render("dashboard/delete", {
-      id: thisPostId,
-    });
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("dashboard/delete", {
+        id: thisPostId,
+      });
+    }
   });
 });
 
@@ -211,16 +259,6 @@ app.post("/delete", function (req, res) {
       console.log(err);
     } else {
       res.redirect("/");
-    }
-  });
-});
-
-app.post("/comment/delete", function (req, res) {
-  const commentId = req.body.commentForDelete;
-
-  Comment.findOneAndDelete({ _id: commentId }, function (err) {
-    if(!err){
-      res.redirect("/dashboard");
     }
   });
 });
@@ -256,17 +294,36 @@ app.post("/comment", function (req, res) {
     postId: req.body.postId,
     user: req.body.commenter,
     comment: req.body.commentInput,
+    date: getPostDate(),
   });
 
   comment.save(function (err) {
-    if (!err) {
-      res.redirect(req.get('referer'));
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect(req.get("referer"));
+    }
+  });
+});
+
+app.post("/comment/delete", function (req, res) {
+  const commentId = req.body.commentForDelete;
+
+  Comment.findOneAndDelete({ _id: commentId }, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/dashboard");
     }
   });
 });
 
 //Send e-mail with nodemail
 //it is required to create a FROM_MAIL and MAIL_PASS with the blog e-mail and a TO_MAIL, where the e-mail will be sent to, in the .env file.
+
+app.get("/contact", function (req, res) {
+  res.render("contact/contactPage");
+});
 
 app.post("/sendMail", function (req, res) {
   const from = process.env.FROM_MAIL;
@@ -291,9 +348,33 @@ app.post("/sendMail", function (req, res) {
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
       console.log(err);
-      res.render("messageSent", { message: "Unable to send message" });
+      res.render("contact/messageSent", { message: "Unable to send message" });
     } else {
-      res.render("messageSent", { message: "Thank you. Message Sent!" });
+      res.render("contact/messageSent", {
+        message: "Thank you. Message Sent!",
+      });
+    }
+  });
+});
+
+// Home Render
+
+app.get("/:pageNumber", function (req, res) {
+  const requestedPage = req.params.pageNumber;
+
+  Post.find({}, function (err, posts) {
+    const from = requestedPage + 0;
+    const to = requestedPage + 9;
+    const reversedPosts = posts.reverse();
+    const selectedPosts = reversedPosts.slice(from, to);
+
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("home", {
+        posts: selectedPosts,
+        params: requestedPage,
+      });
     }
   });
 });

@@ -1,0 +1,45 @@
+<%- include("../partials/header"); -%>
+
+<div class="container mailContainer">
+    <h2>Contact me:</h2>
+    <form action="/sendMail" method="POST">
+      <div class="form-group">
+        <label for="senderEmail">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="senderEmail"
+          aria-describedby="emailHelp"
+          placeholder="Enter e-mail"
+          name="email"
+        />
+        <small id="emailHelp" class="form-text text-muted"
+          >We'll never share your email with anyone else.</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input
+          type="text"
+          class="form-control"
+          id="subject"
+          placeholder="Subject"
+          name="subject"
+        />
+      </div>
+      <div class="form-group">
+        <label for="text">Text</label>
+        <textarea
+          class="form-control"
+          placeholder="Write your message..."
+          name="text"
+          id="mailText"
+          cols="20"
+          rows="10"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+<%- include("../partials/footer"); -%>
