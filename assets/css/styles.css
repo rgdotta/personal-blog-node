@@ -1,230 +1,89 @@
-html {
-  min-height: 100%;
-  position: relative;
+.navbar .container div form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-.title {
-  margin-bottom: 0;
+.navbar .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.title a {
-  text-decoration: none;
-  font-size: 30px;
-  color: rgb(43, 43, 43);
-  font-weight: bolder;
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-image: url("./images/connected.png");
+  background-color: #fffefe;
+  color: #454343;
 }
 
-.title a:hover {
-  color: #777;
+.navbar .container div a {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-#intro {
-  width: 70%;
-  font-size: 20px;
-  font-weight: bold;
-  opacity: 0.8;
-  padding: 15px;
-}
-
-#logo {
-  background-image: url("images/logo.png");
-  height: 200px;
-  background-repeat: no-repeat;
-  background-position-x: center;
-}
-
-.container-fluid {
-  padding-top: 70px;
-  padding-bottom: 70px;
-}
-.navbar {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0;
-  font-size: 12px;
-  letter-spacing: 5px;
-}
-.navbar-nav li a:hover {
-  color: #1abc9c !important;
-}
-
-.home,
-.login {
-  text-align: center;
-  padding: 30px;
-}
-
-.login p {
-  font-size: 30px;
-  font-weight: bolder;
-}
-
-.posts,
-.postPage {
-  margin: 20px auto;
-  box-shadow: 0 0 5px grey;
-  border-radius: 7px;
-}
-
-.posts a {
-  text-decoration: none;
-  color: rgb(43, 43, 43);
-}
-
-.posts h1,
-.posts p,
-.postPage h1,
-.postPage p {
-  padding: 10px;
-}
-
-.postPage h1 {
-  text-align: center;
-}
-
-.posts h1 {
-  background-image: url("images/h1-bg.jpg");
-  color: #ffffff;
-  border-radius: 7px;
-}
-
-.composeBody {
-  min-height: 500px;
-}
-
-.idForm {
-  margin: 10px auto;
-}
-
-.blog-container,
-.mailContainer {
-  margin-top: 20px;
-  text-align: center;
-  height: 100%;
-  background-color: #f8f8f8;
-  box-shadow: 3px 3px 3px lightgrey;
-  border-radius: 7px;
-  padding: 20px;
-}
-
-.editContainer {
-  margin: 20px auto !important;
-  padding: 10px;
+.navbar .container div form {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 80%;
-  text-align: center;
-  align-items: center;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-}
-
-.editContainer textarea {
-  width: 100%;
-}
-
-.idForEditForm {
-  display: flex;
-  flex-direction: row;
-  width: 300px;
-  height: 35px;
-  margin: 0 5px;
-}
-
-.idForEditForm textarea {
-  margin: 0 5px;
-}
-
-.mailContainer {
-  box-shadow: 0 0 5px grey !important;
-  margin-top: 50px;
-  margin-bottom: 30px;
-  text-align: left;
-}
-
-.mailContainer h2 {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-#contactLog {
-  font-size: 10px;
-  color: red;
-}
-
-
-#copyright {
-  width: 100%;
-  text-align: center;
-  opacity: 0.5;
-}
-
-.makeComment{
-  margin: 40px auto auto auto;
-  padding: 20px;
-  width: 500px;
-  box-shadow: 0 0 5px grey;
-  border-radius: 7px;
-}
-
-.makeComment form {
-  display: flex;
-  flex-direction: column;
-}
-
-.makeComment h2 {
-  text-align: center;
-}
-
-.makeComment label {
-  margin-top: 10px;
-}
-
-.makeComment input, .makeComment textarea  {
-  border: 1px solid #ccc!important;
-  border-radius: 7px;
-}
-
-.commentInput {
-  height: 100px;
-  margin-bottom: 20px;
-}
-
-.inputSubmit {
   margin: auto;
-  width: 100px;
+  border-radius: 7px;
+  -webkit-box-shadow: 3px 4px 6px -4px #a89ea8;
+  box-shadow: 3px 4px 6px -4px #a89ea8;
+}
+
+.navbar .container div form input[type="text"] {
+  border: 1px solid #c2c1c1;
+  padding-left: 10px;
   height: 50px;
+  width: 80%;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 
-.commentList {
-  margin: auto;
+.navbar .container div form button[type="submit"] {
+  background-color: initial;
+  border: 1px solid #c2c1c1;
+  cursor: pointer;
+  width: 20%;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
-.commentList h3 {
-  border-bottom: 1px solid #ccc;
+.navbar .container div form button[type="submit"] :hover {
+  background-color: #5574c9;
 }
 
-.commentBox {
-  margin-top: 20px;
-  margin-left: 20px;
+.navbar .container div form button[type="submit"]:hover {
+  background-color: #5574c9;
 }
 
-.commentBox p {
-  margin-left: 20px;
+.navbar .container .contactBtnContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30px;
 }
 
-.commentBox h4 {
-  margin-bottom: 0;
+.navbar .container .contactBtnContainer a {
+  text-decoration: none;
+  color: #454343;
 }
-
-.commentDashboard{
-  margin-top: 10px;
-}
-
-.commentDashboard input {
-  width: 20px;
-  height: 20px;
-  padding: 0;
-}
+/*# sourceMappingURL=styles.css.map */

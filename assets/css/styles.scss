@@ -1,0 +1,78 @@
+%flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+%flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-image: url("./images/connected.png");
+  background-color: #fffefe;
+  color: #454343;
+}
+
+//navbar
+
+.navbar {
+  .container {
+    @extend %flex-column;
+
+    div {
+      a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      form {
+        @extend %flex-row;
+        justify-content: center;
+        width: 80%;
+        margin: auto;
+        border-radius: 7px;
+        -webkit-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+        -moz-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+        box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+
+        input[type="text"] {
+          border: 1px solid rgb(194, 193, 193);
+          padding-left: 10px;
+          height: 50px;
+          width: 80%;
+          border-top-left-radius: 7px;
+          border-bottom-left-radius: 7px;
+        }
+
+        button[type="submit"] {
+          background-color: initial;
+          border: 1px solid rgb(194, 193, 193);
+          cursor: pointer;
+          width: 20%;
+          border-top-right-radius: 7px;
+          border-bottom-right-radius: 7px;
+          :hover{
+            background-color: #5574c9;
+          }
+        }
+
+        button[type="submit"]:hover {
+            background-color: #5574c9;
+        }
+      }
+    }
+    .contactBtnContainer{
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+
+        a{
+            text-decoration: none;
+            color: #454343;;
+        }
+    }
+  }
+}

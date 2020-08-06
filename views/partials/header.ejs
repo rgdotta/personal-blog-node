@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RGDotta Devlog</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link
+  <title>RGDotta Devlog</title>
+
+  <!-- <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="/css/styles.css" />
-    
-  <head>  
+    /> -->
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <script src="https://kit.fontawesome.com/33d443b19e.js" crossorigin="anonymous"></script>
+
+  <head>
+
   <body>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <p class="title navbar-brand"><a href="/">RGDOTTA DEVLOG</a></p>
+          <a href="/"><img src="css/images/logo.png" alt="logo"/></a>
         </div>
-        <div style="margin: 8px" class="nav navbar-nav navbar-right">
-            <form class="form-inline" action="search" method="POST">
-               <input
-                 class="form-control"
-                 type="search"
-                 placeholder="Search post"
-                 aria-label="Search"
-                 name="searchInput"
-               />
-               <button class="btn btn-primary" type="submit">
-                 Search
-               </button>
-            </form>
+        <div class="nav navbar-nav navbar-right">
+          <form class="form-inline" action="search" method="POST">
+            <input class="form-control" type="text" placeholder="Pesquisar post" aria-label="Search" name="searchInput" />
+            <button class="btn btn-primary" type="submit" value="Pesquisar"><i class="fas fa-2x fa-search"></i></button>
+          </form>
+        </div>
+        <div class="contactBtnContainer">
+          <button>
             <a href="/contact">Entre em contato</a>
+          </button>
+        </div>
       </div>
     </nav>
     <div class="container"></div>
-  
