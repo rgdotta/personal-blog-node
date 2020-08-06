@@ -16,9 +16,9 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "infinite-scroll": "^3.0.6",
-    "lodash": "^4.17.11",
-    "mongoose": "^5.9.9",
-    "nodemailer": "^6.4.6",
+    "lodash": "^4.17.19",
+    "mongoose": "^5.9.27",
+    "nodemailer": "^6.4.11",
     "sessionstorage": "^0.1.0"
   }
 }
