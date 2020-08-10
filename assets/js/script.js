@@ -11,7 +11,7 @@ document.getElementById("copyright").innerHTML =
   "<p>Desenvolvido por Rafael Dotta </br> Copyright © " + year + "</p>";
 
 tinymce.init({
-  selector: "#editor",
+  selector: ".editor",
   plugins: "image codesample preview wordcount emoticons",
   height: "1000",
 });

@@ -1,0 +1,17 @@
+<%- include("../partials/header"); -%>
+
+<div class="container">
+  <h1>Edit Post</h1>
+  <form class="" action="/posts/edit/confirm" method="post">
+    <div class="form-group">
+      <label>Title</label>
+      <input class="form-control" type="text" name="editTitle" value="<%= title %>" />
+      <label>Post</label>
+      <textarea required class="editor" name="editBody"><%= content %></textarea>
+      <textarea class="form-control idForm" name="editId" rows="1" readonly><%= id %></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit" name="button">Publish</button>
+  </form>
+</div>
+
+<%- include("../partials/footer"); -%>
