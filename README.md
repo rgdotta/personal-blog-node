@@ -47,67 +47,26 @@ This is still a work in progress, here is what is in my plans fot this project:
 
 ### Home
 
-![](assets/css/images/blog1.png)
+![](public/css/images/blog1.png)
 
 ### Post
 
-![](assets/css/images/blog-post1.png)
+![](public/css/images/blog-post1.png)
 
 You can search by title or the post content.
 
-![](assets/css/images/blog-searchx.png)
+![](public/css/images/blog-searchx.png)
 
 ### Comment Section
 
-![](assets/css/images/comment-section.png)
-
-
-### All CRUD methods are aplied.
-
-Create:
-
-![](assets/css/images/blog-create.png)
-
-Read:
-
-![](assets/css/images/blog-read.png)
-
-Update:
-
-![](assets/css/images/blog-update.png)
-
-Delete:
-
-![](assets/css/images/blog-delete%20(1).png)
-
-### Authentication
-
-The authentication is done with bcrypt and environment variables. Because of the simplicity of the blogger options, there's no need to mantain a session.
-
-![](assets/css/images/blog-authent.png)
-
-----
-
-![](assets/css/images/blog-blogger.png)
-
-----
-
-Edit:
-
-![](assets/css/images/blog-edit.png)
-
-----
-
-Delete:
-
-![](assets/css/images/blog-delete.png)
+![](public/css/images/comment-section.png)
 
 ### Contact
 
 Mail message delivery using nodemail.
 
-![](assets/css/images/blog-nodemail.png)
+![](public/css/images/blog-nodemail.png)
 
-![](assets/css/images/blog-contact.png)
+![](public/css/images/blog-contact.png)
 
 
