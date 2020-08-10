@@ -1,17 +1,21 @@
 <%- include("partials/header"); -%>
 
-<div class="container">
-  <h3 class="text-center">SEARCH RESULTS:</h3>
+<div class="searchTitle">
+  <h3>Resultados da pesquisa:</h3>
 </div>
 
-<% posts.forEach(function(post){ %>
-<div class="posts container">
-  <a href="/posts/<%=post._id%>">
-    <h1><%=post.title%></h1>
-    <p>
-      <%-post.content.substring(0, 400) + " ..."%>
-    </p>
-  </a>
+<div class="postsContainer">
+  <% posts.forEach(function(post){ %>
+  <div class="posts container">
+    <a href="/posts/<%=post._id%>">
+      <h1><%=post.title%></h1>
+      <p class="postDate"><%=post.date%></p>
+      <p class="postContent">
+        <%-post.content.substring(0, 400) + " ..."%>
+      </p>
+    </a>
+  </div>
+  <% }) %>
 </div>
 
-<% }) %> <%- include("partials/footer"); -%>
+<%- include("partials/footer"); -%>

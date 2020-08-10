@@ -1,22 +1,22 @@
 <%- include("partials/header"); -%>
-<div class="home container">
-  <div id="logo"></div>
-  <p class="presentationPage" id="intro">
-    Project development updates, games discussions, and other random things.
+<div class="home">
+  <p id="intro">
+    Bem-vindo ao meu blog! </br> Meu nome é Rafael e aqui eu vou postar minhas aventuras no mundo do desenvolvimento web,
+    videogames e aleatoriedades.
   </p>
 </div>
 
 <div class="postsContainer">
   <% posts.forEach(function(post){ %>
-    <div class="posts container">
-      <a href="/posts/<%=post._id%>">
-        <h1><%=post.title%></h1>
-        <p><%=post.date%></p>
-        <p>
-          <%-post.content.substring(0, 400) + " ..."%>
-        </p>
-      </a>
-    </div>
+  <div class="posts container">
+    <a href="/posts/<%=post._id%>">
+      <h1><%=post.title%></h1>
+      <p class="postDate"><%=post.date%></p>
+      <p class="postContent">
+        <%-post.content.substring(0, 400) + " ..."%>
+      </p>
+    </a>
+  </div>
   <% }) %>
 </div>
 

@@ -8,7 +8,7 @@
           flex-direction: row;
 }
 
-.navbar .container {
+.navbar .container, .login form, .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23,6 +23,7 @@ body {
   background-image: url("./images/connected.png");
   background-color: #fffefe;
   color: #454343;
+  margin: 0;
 }
 
 .navbar .container div a {
@@ -64,26 +65,104 @@ body {
   border-bottom-right-radius: 7px;
 }
 
-.navbar .container div form button[type="submit"] :hover {
-  background-color: #5574c9;
-}
-
 .navbar .container div form button[type="submit"]:hover {
   background-color: #5574c9;
 }
 
-.navbar .container .contactBtnContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 30px;
+#searchSubmit:hover {
+  background-color: #5574c9;
 }
 
-.navbar .container .contactBtnContainer a {
+.home {
+  width: 100%;
+  margin: 30px auto;
+  padding: 10px 0;
+  text-align: center;
+  background-color: #454343;
+}
+
+.home p {
+  width: 90%;
+  color: #fffefe;
+  margin: auto;
+  line-height: 25px;
+}
+
+.postsContainer {
+  width: 90%;
+  margin: auto auto 100px auto;
+}
+
+.postsContainer .posts {
+  margin: auto;
+  padding: 0 15px;
+  border-top: 1px solid rgba(69, 67, 67, 0.3);
+}
+
+.postsContainer .posts h1 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.postsContainer .posts .postDate {
+  text-align: center;
+  margin-top: 0;
+  font-size: 12px;
+}
+
+.postsContainer .posts a {
   text-decoration: none;
   color: #454343;
+}
+
+.postsContainer .posts a:hover {
+  text-decoration: underline;
+}
+
+.searchTitle {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.login {
+  margin: 10px auto auto auto;
+  text-align: center;
+  width: 60%;
+}
+
+.login form input {
+  height: 50px;
+}
+
+.login form button {
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  margin: 5px auto auto auto;
+}
+
+.footer {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #454343;
+  height: 100px;
+  color: #fffefe;
+  text-align: center;
+}
+
+.footer div {
+  margin: auto;
+}
+
+.footer #copyright p {
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+.footer a {
+  color: #fffefe !important;
+  text-decoration: underline;
 }
 /*# sourceMappingURL=styles.css.map */
