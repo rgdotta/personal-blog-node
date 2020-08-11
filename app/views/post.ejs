@@ -1,31 +1,45 @@
 <%- include("partials/header"); -%>
 
-<div class="container postPage">
-  <h1><%=title%></h1>
-  <p><%-content%></p>
-</div>
+<div class="postPage">
+  <div class="postContainer">
+    <h1><%=title%></h1>
+    <div class="postContent"><%-content%></div>
+    <p class="postDate"><%=date%></p>
+  </div>
 
-<div class="container commentContainer">
-  <div class="commentList">
-    <h3>Comments:</h3>
-    <% comments.forEach(function(comment){ %>
+  <div class="commentContainer">
+    <h3>Comentários:</h3>
+    <div class="commentList">
+      <%if(comments.length === 0) {%>
+      <p class="emptyPost">Esse post não tem comentários, seja o primerio a comentar!</p>
+      <%}%>
+      <% comments.forEach(function(comment){ %>
       <div class="commentBox">
         <h4><%= comment.user %>:</h4>
         <p><%= comment.comment %></p>
       </div>
-    <% }) %>
-  </div>
-  <div class="makeComment">
-    <h3>Make a comment:</h3>
-    <form action="/comment" method="post">
-      <input readonly type="text" name="postId" style="display: none;" value="<%= id %>">
-      <label for="commenter">Name:</label>
-      <input required type="text" class="commenter" name="commenter" />
-      <label for="commentInput">Comment:</label>
-      <textarea required type="text" class="commentInput" name="commentInput"></textarea>
-      <input class="inputSubmit" type="submit" value="Submit"/>
-    </form>
+      <% }) %>
+    </div>
+    <div class="makeComment">
+      <h3>Deixe seu comentário:</h3>
+      <form action="/comment" method="post">
+        <input readonly type="text" name="postId" style="display: none;" value="<%= id %>">
+        <label for="commenter">Nome:</label>
+        <input required type="text" class="commenter" name="commenter" />
+        <label for="commentInput">Comentário:</label>
+        <textarea required type="text" class="commentInput" id="commentInput" name="commentInput" rows="15"></textarea>
+        <p class="charCount" id="charCount" onchange="handleCharCount()"></p>
+        <div class="captcha">
+          <div><%- captcha.data %></div>
+          <input type="text" id="captchaInput" name="captchaInput" placeholder="Escreva os caractéres da imagem.">
+          <p id="error"></p>
+        </div>
+        <input class="inputSubmit" type="submit" value="ENVIAR" id="commentSubmit" onclick="validate('<%= captcha.text %>', event)"/>
+      </form>
+    </div>
   </div>
 </div>
+
+<script src="/js/commentValidation.js"></script>
 
 <%- include("partials/footer"); -%>

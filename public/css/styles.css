@@ -8,7 +8,7 @@
           flex-direction: row;
 }
 
-.navbar .container, .login form, .footer {
+.navbar .container, .postPage .commentContainer .makeComment form, .postPage .commentContainer .makeComment form .captcha, .login form, .footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,12 +18,42 @@
           flex-direction: column;
 }
 
+.postPage .commentContainer .makeComment form input[type="submit"] {
+  width: 200px;
+  height: 50px;
+  border-radius: 7px;
+  -webkit-box-shadow: 0 8px #c2c1c1;
+          box-shadow: 0 8px #c2c1c1;
+  background-color: #59a5d1;
+  font-size: 16px;
+  color: #fffefe;
+  border-color: #4886aa;
+  margin: auto auto 20px auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.postPage .commentContainer .makeComment form input:hover[type="submit"] {
+  background-color: #4886aa;
+}
+
+.postPage .commentContainer .makeComment form input:active[type="submit"] {
+  background-color: #4886aa;
+  -webkit-box-shadow: 0 1px #c2c1c1;
+          box-shadow: 0 1px #c2c1c1;
+  -webkit-transform: translateY(7px);
+          transform: translateY(7px);
+}
+
 body {
   font-family: "Courier New", Courier, monospace;
   background-image: url("./images/connected.png");
   background-color: #fffefe;
   color: #454343;
   margin: 0;
+  font-size: 15px;
+  line-height: 150%;
 }
 
 .navbar .container div a {
@@ -63,14 +93,32 @@ body {
   width: 20%;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-box-shadow: 3px 4px 6px -4px #a89ea8;
+  box-shadow: 3px 4px 6px -4px #a89ea8;
 }
 
-.navbar .container div form button[type="submit"]:hover {
-  background-color: #5574c9;
+.navbar .container div form button[type="submit"] .fa-search {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 #searchSubmit:hover {
-  background-color: #5574c9;
+  background-color: #59a5d1;
+  border-color: #4886aa;
+}
+
+#searchSubmit:hover .fa-search {
+  color: #fffefe;
+}
+
+#searchSubmit:active {
+  background-color: black;
+  -webkit-box-shadow: 3px 0 6px -4px #a89ea8;
+  box-shadow: 3px 0 6px -4px #a89ea8;
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
 }
 
 .home {
@@ -90,7 +138,7 @@ body {
 
 .postsContainer {
   width: 90%;
-  margin: auto auto 100px auto;
+  margin: auto auto 150px auto;
 }
 
 .postsContainer .posts {
@@ -122,6 +170,104 @@ body {
 .searchTitle {
   text-align: center;
   margin: 50px auto;
+}
+
+.postPage {
+  width: 90%;
+  margin: auto auto 150px auto;
+}
+
+.postPage .postContainer h1 {
+  width: 100%;
+  text-align: center;
+  margin: 60px auto 30px auto;
+}
+
+.postPage .postContainer .postContent {
+  margin: auto auto 40px auto;
+  padding-top: 30px;
+  border-top: 1px solid rgba(69, 67, 67, 0.3);
+}
+
+.postPage .postContainer .postDate {
+  text-align: right;
+  font-size: 12px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(69, 67, 67, 0.3);
+  margin-bottom: 40px;
+}
+
+.postPage .commentContainer {
+  width: 100%;
+  margin: auto;
+}
+
+.postPage .commentContainer .commentList {
+  width: 90%;
+  margin: auto;
+}
+
+.postPage .commentContainer .commentList .commentBox {
+  border: 1px solid rgba(69, 67, 67, 0.3);
+  border-radius: 7px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 3px 4px 6px -4px #a89ea8;
+  box-shadow: 3px 4px 6px -4px #a89ea8;
+}
+
+.postPage .commentContainer .commentList .commentBox h4 {
+  margin: 0 auto auto auto;
+  background-color: rgba(69, 67, 67, 0.2);
+  padding: 7px;
+}
+
+.postPage .commentContainer .commentList .commentBox p {
+  padding: 7px;
+  white-space: pre-wrap;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+.postPage .commentContainer .makeComment {
+  width: 93%;
+  margin: 40px auto auto auto;
+  border: 1px solid rgba(69, 67, 67, 0.3);
+  -webkit-box-shadow: 3px 4px 6px -4px #a89ea8;
+  box-shadow: 3px 4px 6px -4px #a89ea8;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.postPage .commentContainer .makeComment form input {
+  margin-bottom: 20px;
+  border: 1px solid #c2c1c1;
+  height: 35px;
+  border-radius: 7px;
+  padding-left: 10px;
+}
+
+.postPage .commentContainer .makeComment form textarea {
+  resize: none;
+  overflow: auto;
+  border-radius: 7px;
+  border: 1px solid #c2c1c1;
+}
+
+.postPage .commentContainer .makeComment form .captcha {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postPage .commentContainer .makeComment form .captcha input {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 72%;
+}
+
+.postPage .commentContainer .makeComment form #error {
+  color: #b82121;
+  margin: 0 auto 20px auto;
 }
 
 .login {

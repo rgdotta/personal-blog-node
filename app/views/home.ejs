@@ -6,9 +6,9 @@
   </p>
 </div>
 
-<div class="postsContainer">
+<div class="postsContainer infinite">
   <% posts.forEach(function(post){ %>
-  <div class="posts container">
+  <div class="posts container infinitePost">
     <a href="/posts/<%=post._id%>">
       <h1><%=post.title%></h1>
       <p class="postDate"><%=post.date%></p>
@@ -25,5 +25,8 @@
 <p style="display: none;" class="pagination">
   <a class="pagination__next" href="/<%=nextPage%>">Next page</a>
 </p>
+
+<script src="/js/infinite-scroll.pkgd.min.js"></script>
+<script src="/js/infiniteScroll.js"></script>
 
 <%- include("partials/footer"); -%>

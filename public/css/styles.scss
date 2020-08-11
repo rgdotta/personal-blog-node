@@ -8,12 +8,38 @@
   flex-direction: column;
 }
 
+%submit-btn {
+  width: 200px;
+  height: 50px;
+  border-radius: 7px;
+  box-shadow: 0 8px rgb(194, 193, 193);
+  background-color: #59a5d1;
+  font-size: 16px;
+  color:#fffefe;
+  border-color: #4886aa;
+  margin: auto auto 20px auto;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+%submit-btn:hover{
+  background-color: #4886aa;
+}
+
+%submit-btn:active{
+  background-color: #4886aa;
+  box-shadow: 0 1px rgb(194, 193, 193);
+  transform: translateY(7px);
+}
+
 body {
   font-family: "Courier New", Courier, monospace;
   background-image: url("./images/connected.png");
   background-color: #fffefe;
   color: #454343;
   margin: 0;
+  font-size: 15px;
+  line-height: 150%; 
 }
 
 //navbar
@@ -56,10 +82,14 @@ body {
           width: 20%;
           border-top-right-radius: 7px;
           border-bottom-right-radius: 7px;
-        }
+          transition: 0.5s;
+          -webkit-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+          -moz-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+          box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
 
-        button[type="submit"]:hover {
-          background-color: #5574c9;
+          .fa-search {
+            transition: 0.5s;
+          }
         }
       }
     }
@@ -67,7 +97,19 @@ body {
 }
 
 #searchSubmit:hover {
-  background-color: #5574c9;
+  background-color: #59a5d1;
+  border-color: #4886aa;
+  .fa-search {
+    color: #fffefe;
+  }
+}
+
+#searchSubmit:active {
+  background-color: black;
+  -webkit-box-shadow: 3px 0 6px -4px rgba(168, 158, 168, 1);
+  -moz-box-shadow: 3px 0 6px -4px rgba(168, 158, 168, 1);
+  box-shadow: 3px 0 6px -4px rgba(168, 158, 168, 1);
+  transform: translateY(4px);
 }
 
 //home
@@ -87,16 +129,16 @@ body {
 
 .postsContainer {
   width: 90%;
-  margin: auto auto 100px auto;
+  margin: auto auto 150px auto;
   .posts {
     margin: auto;
     padding: 0 15px;
     border-top: 1px solid rgba(69, 67, 67, 0.3);
-    h1{
+    h1 {
       text-align: center;
       margin-bottom: 0;
     }
-    .postDate{
+    .postDate {
       text-align: center;
       margin-top: 0;
       font-size: 12px;
@@ -104,20 +146,115 @@ body {
     a {
       text-decoration: none;
       color: #454343;
-      &:hover{
+      &:hover {
         text-decoration: underline;
       }
     }
   }
 }
 
-.searchTitle{
+.searchTitle {
   text-align: center;
   margin: 50px auto;
 }
 
+//post
+.postPage {
+  width: 90%;
+  margin: auto auto 150px auto;
+
+  .postContainer {
+    h1 {
+      width: 100%;
+      text-align: center;
+      margin: 60px auto 30px auto;
+    }
+    .postContent {
+      margin: auto auto 40px auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(69, 67, 67, 0.3);
+    }
+    .postDate {
+      text-align: right;
+      font-size: 12px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(69, 67, 67, 0.3);
+      margin-bottom: 40px;
+    }
+  }
+  .commentContainer {
+    width: 100%;
+    margin: auto;
+    .commentList {
+      width: 90%;
+      margin: auto;
+      .commentBox {
+        border: 1px solid rgba(69, 67, 67, 0.3);
+        border-radius: 7px;
+        margin-bottom: 20px;
+        -webkit-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+        -moz-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+        box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+        h4 {
+          margin: 0 auto auto auto;
+          background-color: rgba(69, 67, 67, 0.2);
+          padding: 7px;
+        }
+        p {
+          padding: 7px;
+          white-space: pre-wrap;
+          margin: 0 auto;
+          font-size: 15px;
+        }
+      }
+    }
+    .makeComment {
+      width: 93%;
+      margin: 40px auto auto auto;
+      border: 1px solid rgba(69, 67, 67, 0.3);
+      -webkit-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+      -moz-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+      box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+      border-radius: 7px;
+      padding: 10px;
+      form {
+        @extend %flex-column;
+        input {
+          margin-bottom: 20px;
+          border: 1px solid rgb(194, 193, 193);
+          height: 35px;
+          border-radius: 7px;
+          padding-left: 10px;
+        }
+        textarea {
+          resize: none;
+          overflow: auto;
+          border-radius: 7px;
+          border: 1px solid rgb(194, 193, 193);
+        }
+        .captcha {
+          @extend %flex-column;
+          align-items: center;
+          input {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            width: 72%;
+          }
+        }
+        #error{
+          color: rgb(184, 33, 33);
+          margin: 0 auto 20px auto;
+        }
+        input[type="submit"] {
+          @extend %submit-btn;
+        }
+      }
+    }
+  }
+}
+
 //dashboard
-.login{
+.login {
   margin: 10px auto auto auto;
   text-align: center;
   width: 60%;
@@ -125,7 +262,7 @@ body {
   form {
     @extend %flex-column;
 
-    input{
+    input {
       height: 50px;
     }
 
