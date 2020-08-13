@@ -245,6 +245,7 @@ body {
           overflow: auto;
           border-radius: 7px;
           border: 1px solid rgb(194, 193, 193);
+          padding: 10px;
         }
         .captcha {
           @extend %flex-column;

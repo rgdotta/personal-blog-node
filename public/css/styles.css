@@ -270,6 +270,7 @@ body {
   overflow: auto;
   border-radius: 7px;
   border: 1px solid #c2c1c1;
+  padding: 10px;
 }
 
 .postPage .commentContainer .makeComment form .captcha {
