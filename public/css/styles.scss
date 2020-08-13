@@ -14,7 +14,7 @@
   border-radius: 7px;
   box-shadow: 0 8px rgb(194, 193, 193);
   background-color: #59a5d1;
-  font-size: 16px;
+  font-size: 19px;
   color: #fffefe;
   border-color: #4886aa;
   margin: auto auto 20px auto;
@@ -33,13 +33,16 @@
 }
 
 body {
-  font-family: "Courier New", Courier, monospace;
+  font-family: adobe-garamond-pro, serif;
+  font-weight: 400;
+  font-style: normal;
   background-image: url("./images/connected.png");
   background-color: #fffefe;
-  color: #454343;
+  color: rgba(69, 67, 67, 0.9);
   margin: 0;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 150%;
+  letter-spacing: 1px;
 }
 
 //navbar
@@ -141,7 +144,7 @@ body {
     .postDate {
       text-align: center;
       margin-top: 0;
-      font-size: 12px;
+      font-size: 15px;
     }
     a {
       text-decoration: none;
@@ -176,10 +179,11 @@ body {
     }
     .postDate {
       text-align: right;
-      font-size: 12px;
+      font-size: 15px;
       padding-bottom: 30px;
       border-bottom: 1px solid rgba(69, 67, 67, 0.3);
       margin-bottom: 40px;
+      color: rgba(69, 67, 67, 0.6);
     }
   }
   .commentContainer {
@@ -204,7 +208,7 @@ body {
           padding: 7px;
           white-space: pre-wrap;
           margin: 0 auto;
-          font-size: 15px;
+          font-size: 18px;
         }
       }
     }
@@ -311,7 +315,7 @@ body {
       flex-direction: column;
       margin-top: 20px;
       label {
-        font-size: 20px;
+        font-size: 23px;
         font-weight: bold;
         margin-bottom: 10px;
       }
@@ -347,7 +351,7 @@ body {
   #copyright {
     p {
       margin: 10px 0;
-      font-size: 12px;
+      font-size: 15px;
     }
   }
 
@@ -381,7 +385,7 @@ body {
     @extend %flex-column;
     margin: 20px auto;
     width: 90%;
-    label{
+    label {
       margin-top: 20px;
     }
     input {
@@ -399,7 +403,9 @@ body {
       border-radius: 7px;
       border: 1px solid rgb(194, 193, 193);
     }
-    small{font-size: 10px;}
+    small {
+      font-size: 13px;
+    }
   }
 
   .contactSubmit {
@@ -434,7 +440,7 @@ body {
   #captchaInput {
     width: 32%;
   }
-  .mailContainer{
+  .mailContainer {
     width: 60%;
   }
 }

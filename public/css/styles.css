@@ -25,7 +25,7 @@
   -webkit-box-shadow: 0 8px #c2c1c1;
           box-shadow: 0 8px #c2c1c1;
   background-color: #59a5d1;
-  font-size: 16px;
+  font-size: 19px;
   color: #fffefe;
   border-color: #4886aa;
   margin: auto auto 20px auto;
@@ -47,13 +47,16 @@
 }
 
 body {
-  font-family: "Courier New", Courier, monospace;
+  font-family: adobe-garamond-pro, serif;
+  font-weight: 400;
+  font-style: normal;
   background-image: url("./images/connected.png");
   background-color: #fffefe;
-  color: #454343;
+  color: rgba(69, 67, 67, 0.9);
   margin: 0;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 150%;
+  letter-spacing: 1px;
 }
 
 .navbar .container div a {
@@ -155,7 +158,7 @@ body {
 .postsContainer .posts .postDate {
   text-align: center;
   margin-top: 0;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .postsContainer .posts a {
@@ -191,10 +194,11 @@ body {
 
 .postPage .postContainer .postDate {
   text-align: right;
-  font-size: 12px;
+  font-size: 15px;
   padding-bottom: 30px;
   border-bottom: 1px solid rgba(69, 67, 67, 0.3);
   margin-bottom: 40px;
+  color: rgba(69, 67, 67, 0.6);
 }
 
 .postPage .commentContainer {
@@ -225,7 +229,7 @@ body {
   padding: 7px;
   white-space: pre-wrap;
   margin: 0 auto;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .postPage .commentContainer .makeComment {
@@ -342,7 +346,7 @@ body {
 }
 
 .composeContainer form .form-control label {
-  font-size: 20px;
+  font-size: 23px;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -374,7 +378,7 @@ body {
 
 .footer #copyright p {
   margin: 10px 0;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .footer a {
@@ -428,7 +432,7 @@ body {
 }
 
 .mailContainer .form-control small {
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .mailContainer .contactSubmit {
