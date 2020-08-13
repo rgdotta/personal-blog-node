@@ -21,7 +21,9 @@
       <% }) %>
     </div>
     <div class="makeComment">
-      <h3>Deixe seu comentário:</h3>
+      <div class="commentTitle">
+        <h3>Deixe seu comentário:</h3>
+      </div>
       <form action="/comment" method="post">
         <input readonly type="text" name="postId" style="display: none;" value="<%= id %>">
         <label for="commenter">Nome:</label>
@@ -31,10 +33,12 @@
         <p class="charCount" id="charCount" onchange="handleCharCount()"></p>
         <div class="captcha">
           <div><%- captcha.data %></div>
-          <input type="text" id="captchaInput" name="captchaInput" placeholder="Escreva os caractéres da imagem.">
+          <label for="captchaInput">Digite os caractéres da imagem:</label>
+          <input type="text" id="captchaInput" name="captchaInput" />
           <p id="error"></p>
         </div>
-        <input class="inputSubmit" type="submit" value="ENVIAR" id="commentSubmit" onclick="validate('<%= captcha.text %>', event)"/>
+        <input class="inputSubmit" type="submit" value="ENVIAR" id="commentSubmit"
+          onclick="validate('<%= captcha.text %>', event)" />
       </form>
     </div>
   </div>

@@ -8,7 +8,7 @@
           flex-direction: row;
 }
 
-.navbar .container, .postPage .commentContainer .makeComment form, .postPage .commentContainer .makeComment form .captcha, .login form, .footer {
+.navbar .container, .postPage .commentContainer .makeComment form, .postPage .commentContainer .makeComment form .captcha, .login form, .footer, .mailContainer, .mailContainer .form-control {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,7 +18,7 @@
           flex-direction: column;
 }
 
-.postPage .commentContainer .makeComment form input[type="submit"] {
+.postPage .commentContainer .makeComment form input[type="submit"], .composeContainer form .publishContainer button, .mailContainer .contactSubmit button {
   width: 200px;
   height: 50px;
   border-radius: 7px;
@@ -34,11 +34,11 @@
   cursor: pointer;
 }
 
-.postPage .commentContainer .makeComment form input:hover[type="submit"] {
+.postPage .commentContainer .makeComment form input:hover[type="submit"], .composeContainer form .publishContainer button:hover, .mailContainer .contactSubmit button:hover {
   background-color: #4886aa;
 }
 
-.postPage .commentContainer .makeComment form input:active[type="submit"] {
+.postPage .commentContainer .makeComment form input:active[type="submit"], .composeContainer form .publishContainer button:active, .mailContainer .contactSubmit button:active {
   background-color: #4886aa;
   -webkit-box-shadow: 0 1px #c2c1c1;
           box-shadow: 0 1px #c2c1c1;
@@ -235,7 +235,22 @@ body {
   -webkit-box-shadow: 3px 4px 6px -4px #a89ea8;
   box-shadow: 3px 4px 6px -4px #a89ea8;
   border-radius: 7px;
-  padding: 10px;
+}
+
+.postPage .commentContainer .makeComment .commentTitle {
+  margin: 0;
+  background-color: rgba(69, 67, 67, 0.2);
+}
+
+.postPage .commentContainer .makeComment .commentTitle h3 {
+  width: 90%;
+  margin: auto;
+  padding: 20px 0;
+}
+
+.postPage .commentContainer .makeComment form {
+  width: 90%;
+  margin: 20px auto;
 }
 
 .postPage .commentContainer .makeComment form input {
@@ -271,9 +286,12 @@ body {
 }
 
 .login {
-  margin: 10px auto auto auto;
+  margin: 40px auto 150px auto;
   text-align: center;
   width: 60%;
+  border: 1px solid rgba(69, 67, 67, 0.3);
+  border-radius: 7px;
+  padding: 10px;
 }
 
 .login form input {
@@ -284,7 +302,59 @@ body {
   cursor: pointer;
   width: 100px;
   height: 50px;
-  margin: 5px auto auto auto;
+  margin: 15px auto auto auto;
+}
+
+.composeContainer {
+  width: 90%;
+  border-top: 1px solid rgba(69, 67, 67, 0.2);
+  border-top: 1px solid rgba(69, 67, 67, 0.2);
+  margin: 50px auto 150px auto;
+}
+
+.composeContainer .composeTitle {
+  height: 60px;
+  width: 100%;
+  background-color: #454343;
+  text-align: center;
+  display: table;
+}
+
+.composeContainer .composeTitle h1 {
+  color: #fffefe;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.composeContainer form {
+  margin-top: 40px;
+}
+
+.composeContainer form .form-control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 20px;
+}
+
+.composeContainer form .form-control label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.composeContainer form .publishContainer {
+  width: 100%;
+  text-align: center;
+}
+
+.composeContainer form .publishContainer button {
+  margin: auto;
+  margin-top: 30px;
 }
 
 .footer {
@@ -310,5 +380,84 @@ body {
 .footer a {
   color: #fffefe !important;
   text-decoration: underline;
+}
+
+.mailContainer {
+  margin: 50px auto 150px auto;
+  width: 90%;
+  border: 1px solid rgba(69, 67, 67, 0.3);
+  -webkit-box-shadow: 3px 4px 6px -4px #a89ea8;
+  box-shadow: 3px 4px 6px -4px #a89ea8;
+  border-radius: 7px;
+}
+
+.mailContainer .mailTitle {
+  background-color: rgba(69, 67, 67, 0.2);
+  margin: 0;
+}
+
+.mailContainer .mailTitle h2 {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.mailContainer .form-control {
+  margin: 20px auto;
+  width: 90%;
+}
+
+.mailContainer .form-control label {
+  margin-top: 20px;
+}
+
+.mailContainer .form-control input {
+  margin-bottom: 0px;
+  margin-top: 5px;
+  border: 1px solid #c2c1c1;
+  height: 35px;
+  border-radius: 7px;
+  padding-left: 10px;
+}
+
+.mailContainer .form-control textarea {
+  padding: 5px;
+  resize: none;
+  overflow: auto;
+  border-radius: 7px;
+  border: 1px solid #c2c1c1;
+}
+
+.mailContainer .form-control small {
+  font-size: 10px;
+}
+
+.mailContainer .contactSubmit {
+  width: 100%;
+  text-align: center;
+}
+
+.mailContainer .contactSubmit button {
+  margin: 30px auto 30px auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar .container div form {
+    width: 40%;
+  }
+  .postsContainer {
+    width: 60%;
+  }
+  .postPage {
+    width: 70%;
+  }
+  .postPage .commentContainer {
+    width: 80%;
+  }
+  #captchaInput {
+    width: 32%;
+  }
+  .mailContainer {
+    width: 60%;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,16 +1,22 @@
 <%- include("../partials/header"); -%>
 
-  <div class="container">
-    <h1>Compose</h1>
-    <form action="/dashboard/compose/new" method="post">
-      <div class="form-group">
-        <label>Title</label>
-        <input required class="form-control" type="text" name="postTitle" />
-        <label>Post</label>
-        <textarea required class="editor" name="postBody"></textarea>
-      </div>
-      <button class="btn btn-primary" type="submit" name="button">Publish</button>
-    </form>
+<div class="composeContainer">
+  <div class="composeTitle">
+    <h1>COMPOSE</h1>
   </div>
+  <form action="/dashboard/compose/new" method="post">
+    <div class="form-control">
+      <label>Título:</label>
+      <input required type="text" name="postTitle" />
+    </div>
+    <div class="form-control">
+      <label>Conteúdo:</label>
+      <textarea required class="editor" name="postBody"></textarea>
+    </div>
+    <div class="publishContainer">
+      <button type="submit" name="button">Publicar</button>
+    </div>
+  </form>
+</div>
 
 <%- include("../partials/footer"); -%>

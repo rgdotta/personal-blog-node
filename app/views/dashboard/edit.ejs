@@ -1,17 +1,22 @@
 <%- include("../partials/header"); -%>
 
-<div class="container">
-  <h1>Edit Post</h1>
+<div class="composeContainer">
+  <div class="composeTitle">
+    <h1>EDITAR POST</h1>
+  </div>
   <form class="" action="/posts/edit/confirm" method="post">
-    <div class="form-group">
+    <div class="form-control">
       <label>Title</label>
       <input class="form-control" type="text" name="editTitle" value="<%= title %>" />
+    </div>
+    <div class="form-control">
       <label>Post</label>
       <textarea required class="editor" name="editBody"><%= content %></textarea>
       <textarea class="form-control idForm" name="editId" rows="1" readonly><%= id %></textarea>
     </div>
-    <button class="btn btn-primary" type="submit" name="button">Publish</button>
-  </form>
+    <div class="publishContainer">
+      <button type="submit" name="button">Publicar</button>
+    </div>
 </div>
 
 <%- include("../partials/footer"); -%>

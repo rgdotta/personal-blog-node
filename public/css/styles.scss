@@ -15,18 +15,18 @@
   box-shadow: 0 8px rgb(194, 193, 193);
   background-color: #59a5d1;
   font-size: 16px;
-  color:#fffefe;
+  color: #fffefe;
   border-color: #4886aa;
   margin: auto auto 20px auto;
   transition: 0.5s;
   cursor: pointer;
 }
 
-%submit-btn:hover{
+%submit-btn:hover {
   background-color: #4886aa;
 }
 
-%submit-btn:active{
+%submit-btn:active {
   background-color: #4886aa;
   box-shadow: 0 1px rgb(194, 193, 193);
   transform: translateY(7px);
@@ -39,7 +39,7 @@ body {
   color: #454343;
   margin: 0;
   font-size: 15px;
-  line-height: 150%; 
+  line-height: 150%;
 }
 
 //navbar
@@ -216,8 +216,18 @@ body {
       -moz-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
       box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
       border-radius: 7px;
-      padding: 10px;
+      .commentTitle {
+        margin: 0;
+        background-color: rgba(69, 67, 67, 0.2);
+        h3 {
+          width: 90%;
+          margin: auto;
+          padding: 20px 0;
+        }
+      }
       form {
+        width: 90%;
+        margin: 20px auto;
         @extend %flex-column;
         input {
           margin-bottom: 20px;
@@ -241,7 +251,7 @@ body {
             width: 72%;
           }
         }
-        #error{
+        #error {
           color: rgb(184, 33, 33);
           margin: 0 auto 20px auto;
         }
@@ -255,10 +265,12 @@ body {
 
 //dashboard
 .login {
-  margin: 10px auto auto auto;
+  margin: 40px auto 150px auto;
   text-align: center;
   width: 60%;
-
+  border: 1px solid rgba(69, 67, 67, 0.3);
+  border-radius: 7px;
+  padding: 10px;
   form {
     @extend %flex-column;
 
@@ -270,7 +282,48 @@ body {
       cursor: pointer;
       width: 100px;
       height: 50px;
-      margin: 5px auto auto auto;
+      margin: 15px auto auto auto;
+    }
+  }
+}
+
+.composeContainer {
+  width: 90%;
+  border-top: 1px solid rgba(69, 67, 67, 0.2);
+  border-top: 1px solid rgba(69, 67, 67, 0.2);
+  margin: 50px auto 150px auto;
+  .composeTitle {
+    height: 60px;
+    width: 100%;
+    background-color: #454343;
+    text-align: center;
+    display: table;
+    h1 {
+      color: #fffefe;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  form {
+    margin-top: 40px;
+    .form-control {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      label {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
+    .publishContainer {
+      width: 100%;
+      text-align: center;
+      button {
+        margin: auto;
+        margin-top: 30px;
+        @extend %submit-btn;
+      }
     }
   }
 }
@@ -301,5 +354,87 @@ body {
   a {
     color: #fffefe !important;
     text-decoration: underline;
+  }
+}
+
+.mailContainer {
+  margin: 50px auto 150px auto;
+  width: 90%;
+  border: 1px solid rgba(69, 67, 67, 0.3);
+  -webkit-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+  -moz-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+  box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+  border-radius: 7px;
+
+  @extend %flex-column;
+
+  .mailTitle {
+    background-color: rgba(69, 67, 67, 0.2);
+    margin: 0;
+    h2 {
+      width: 90%;
+      margin: 20px auto;
+    }
+  }
+
+  .form-control {
+    @extend %flex-column;
+    margin: 20px auto;
+    width: 90%;
+    label{
+      margin-top: 20px;
+    }
+    input {
+      margin-bottom: 0px;
+      margin-top: 5px;
+      border: 1px solid rgb(194, 193, 193);
+      height: 35px;
+      border-radius: 7px;
+      padding-left: 10px;
+    }
+    textarea {
+      padding: 5px;
+      resize: none;
+      overflow: auto;
+      border-radius: 7px;
+      border: 1px solid rgb(194, 193, 193);
+    }
+    small{font-size: 10px;}
+  }
+
+  .contactSubmit {
+    width: 100%;
+    text-align: center;
+    button {
+      margin: 30px auto 30px auto;
+      @extend %submit-btn;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar {
+    .container {
+      div {
+        form {
+          width: 40%;
+        }
+      }
+    }
+  }
+  .postsContainer {
+    width: 60%;
+  }
+  .postPage {
+    width: 70%;
+    .commentContainer {
+      width: 80%;
+    }
+  }
+  #captchaInput {
+    width: 32%;
+  }
+  .mailContainer{
+    width: 60%;
   }
 }

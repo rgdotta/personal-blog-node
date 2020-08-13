@@ -1,45 +1,26 @@
 <%- include("../partials/header"); -%>
 
-<div class="container mailContainer">
-    <h2>Contact me:</h2>
-    <form action="/contact/sendMail" method="POST">
-      <div class="form-group">
-        <label for="senderEmail">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="senderEmail"
-          aria-describedby="emailHelp"
-          placeholder="Enter e-mail"
-          name="email"
-        />
-        <small id="emailHelp" class="form-text text-muted"
-          >We'll never share your email with anyone else.</small
-        >
-      </div>
-      <div class="form-group">
-        <label for="subject">Subject</label>
-        <input
-          type="text"
-          class="form-control"
-          id="subject"
-          placeholder="Subject"
-          name="subject"
-        />
-      </div>
-      <div class="form-group">
-        <label for="text">Text</label>
-        <textarea
-          class="form-control"
-          placeholder="Write your message..."
-          name="text"
-          id="mailText"
-          cols="20"
-          rows="10"
-        ></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<div class="mailContainer">
+  <div class="mailTitle">
+    <h2>Me envie um e-mail!</h2>
   </div>
+  <form action="/contact/sendMail" method="POST">
+    <div class="form-control">
+      <label for="senderEmail">Seu e-mail:</label>
+      <input type="email" id="senderEmail" aria-describedby="emailHelp" placeholder="exemplo@exemplo.com" name="email" />
+      <small id="emailHelp" class="form-text text-muted">Seu e-mail não será compartilhado com nimguém.</small>
+    </div>
+    <div class="form-control">
+      <label for="subject">Assunto:</label>
+      <input type="text" id="subject" placeholder="Assunto" name="subject" />
+    </div>
+    <div class="form-control">
+      <label for="text">Corpo:</label>
+      <textarea placeholder="Escreva o e-mail..." name="text" id="mailText" cols="20" rows="10"></textarea>
+    </div>
+    <div class="contactSubmit">
+      <button type="submit" class="btn btn-primary">Submit</button></div>
+  </form>
+</div>
 
 <%- include("../partials/footer"); -%>
