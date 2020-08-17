@@ -1,33 +1,42 @@
 <%- include("../partials/header"); -%>
 
+<% let rowCount = 0 %>
+
 <div class="bloggerContainer">
   <button class="btn btn-primary"><a href="/dashboard/compose">COMPOSE</a></button>
 
-  <% posts.forEach(function(post){ %>
-  <div class="container dashboardContainer">
-    <div class="mainDashboard">
-      <a class="postDashTitle" href="/posts/<%=post.id%>"><%= post.title %></a>
-      <p><%=post.date%></p>
-      <div>
-        <a class="postInteract" href="/posts/edit/<%=post.id%>">Editar</a>
-        <a class="postInteract" href="/posts/delete/<%=post.id%>">Deletar</a>
-      </div>
-    </div>
-    <div class="commentDashboard">
-      <p>Comentários:</p>
-      <%comments.forEach(function(comment) {%>
-      <%if(comment.postId === post.id) {%>
-      <div>
-        <p><%=comment.comment.substring(0, 20) + " ..."%></p>
-        <form action="/comment/delete" method="POST">
-          <textarea style="display: none;" name="commentForDelete" readonly><%= comment.id %></textarea>
-          <input type="submit" value="Delete" />
-        </form>
-      </div>
-      <%}})%>
-    </div>
+  <div class="rowCount">
+    <% posts.forEach(function(post){ %>
+    <% if(rowCount % 3 === 0) { %>
   </div>
-  <% }); %>
+  <div class="rowCount">
+    <% } %>
+    <div class="container dashboardContainer">
+      <div class="mainDashboard">
+        <a class="postDashTitle" href="/posts/<%=post.id%>"><%= post.title %></a>
+        <p><%=post.date%></p>
+        <div>
+          <a class="postInteract" href="/posts/edit/<%=post.id%>">Editar</a>
+          <a class="postInteract" href="/posts/delete/<%=post.id%>">Deletar</a>
+        </div>
+      </div>
+      <div class="commentDashboard">
+        <p>Comentários:</p>
+        <%comments.forEach(function(comment) {%>
+        <%if(comment.postId === post.id) {%>
+        <div>
+          <p><%=comment.comment.substring(0, 20) + " ..."%></p>
+          <form action="/comment/delete" method="POST">
+            <textarea style="display: none;" name="commentForDelete" readonly><%= comment.id %></textarea>
+            <input type="submit" value="Delete" />
+          </form>
+        </div>
+        <%}})%>
+      </div>
+    </div>
+    <% rowCount++ %>
+    <% }); %>
+  </div>
 </div>
 
 <%- include("../partials/footer"); -%>

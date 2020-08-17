@@ -1,11 +1,11 @@
 <%- include("../partials/header"); -%>
 
-<div class="container postPage">
-  <p>Are you shure you want to delete post this post?</p>
-  <form style="margin-bottom: 5px;" action="/posts/delete/confirm" method="POST">
-    <textarea class="form-control idForm" rows="1" name="deleteId" readonly><%=id%></textarea>
-    <input class="btn btn-primary" type="submit" value="Delete" />
-    <a class="btn btn-danger" href="/">Cancel</a>
+<div class="deleteContainer">
+  <p>Tem certeza que quer deletar o post?</p>
+  <form style="margin-bottom: 5px;" action="/posts/delete" method="POST">
+    <textarea style="display: none" class="form-control idForm" rows="1" name="deleteId" readonly><%=id%></textarea>
+    <input class="btn btn-primary" type="submit" value="Deletar" />
+    <a class="btn btn-danger" href="/">Cancelar</a>
 </div>
 
 <%- include("../partials/footer"); -%>
