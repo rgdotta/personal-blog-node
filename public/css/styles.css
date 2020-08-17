@@ -1,4 +1,4 @@
-.navbar .container div form {
+.navbar .container div form, .bloggerContainer .dashboardContainer .mainDashboard div, .bloggerContainer .dashboardContainer .commentDashboard div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8,7 +8,7 @@
           flex-direction: row;
 }
 
-.navbar .container, .postPage .commentContainer .makeComment form, .postPage .commentContainer .makeComment form .captcha, .login form, .footer, .mailContainer, .mailContainer .form-control {
+.navbar .container, .postPage .commentContainer .makeComment form, .postPage .commentContainer .makeComment form .captcha, .login form, .footer, .mailContainer, .mailContainer .form-control, .bloggerContainer, .bloggerContainer .dashboardContainer .mainDashboard {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,7 +18,7 @@
           flex-direction: column;
 }
 
-.postPage .commentContainer .makeComment form input[type="submit"], .composeContainer form .publishContainer button, .mailContainer .contactSubmit button {
+.postPage .commentContainer .makeComment form input[type="submit"], .composeContainer form .publishContainer button, .mailContainer .contactSubmit button, .bloggerContainer .btn {
   width: 200px;
   height: 50px;
   border-radius: 7px;
@@ -34,11 +34,11 @@
   cursor: pointer;
 }
 
-.postPage .commentContainer .makeComment form input:hover[type="submit"], .composeContainer form .publishContainer button:hover, .mailContainer .contactSubmit button:hover {
+.postPage .commentContainer .makeComment form input:hover[type="submit"], .composeContainer form .publishContainer button:hover, .mailContainer .contactSubmit button:hover, .bloggerContainer .btn:hover {
   background-color: #4886aa;
 }
 
-.postPage .commentContainer .makeComment form input:active[type="submit"], .composeContainer form .publishContainer button:active, .mailContainer .contactSubmit button:active {
+.postPage .commentContainer .makeComment form input:active[type="submit"], .composeContainer form .publishContainer button:active, .mailContainer .contactSubmit button:active, .bloggerContainer .btn:active {
   background-color: #4886aa;
   -webkit-box-shadow: 0 1px #c2c1c1;
           box-shadow: 0 1px #c2c1c1;
@@ -166,7 +166,7 @@ body {
   color: #454343;
 }
 
-.postsContainer .posts a:hover {
+.postInteraction:hover {
   text-decoration: underline;
 }
 
@@ -445,6 +445,87 @@ body {
   margin: 30px auto 30px auto;
 }
 
+.bloggerContainer {
+  width: 80%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+}
+
+.bloggerContainer .btn {
+  margin: 50px auto 50px auto;
+}
+
+.bloggerContainer .btn a {
+  text-decoration: none;
+  color: #fffefe;
+}
+
+.bloggerContainer .dashboardContainer {
+  border: 1px solid rgba(69, 67, 67, 0.3);
+  border-radius: 7px;
+  margin: 20px auto;
+  padding: 10px;
+  -webkit-box-shadow: 3px 4px 6px -4px #a89ea8;
+  box-shadow: 3px 4px 6px -4px #a89ea8;
+}
+
+.bloggerContainer .dashboardContainer .mainDashboard .postDashTitle {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.bloggerContainer .dashboardContainer .mainDashboard div a {
+  margin: 5px 5px 5px 10px;
+  text-decoration: none;
+  border: 1px solid rgba(69, 67, 67, 0.6);
+  border-radius: 5px;
+  padding: 5px;
+  -webkit-box-shadow: 0 8px #c2c1c1;
+          box-shadow: 0 8px #c2c1c1;
+}
+
+.bloggerContainer .dashboardContainer .mainDashboard div a:hover {
+  background-color: #ee5db6;
+  color: #fffefe;
+}
+
+.bloggerContainer .dashboardContainer .mainDashboard div a:active {
+  background-color: #ee5db6;
+  color: #fffefe;
+  -webkit-box-shadow: 0 8px #c2c1c1;
+          box-shadow: 0 8px #c2c1c1;
+}
+
+.bloggerContainer .dashboardContainer .mainDashboard a {
+  color: #454343;
+}
+
+.bloggerContainer .dashboardContainer .mainDashboard p {
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.bloggerContainer .dashboardContainer .commentDashboard div {
+  height: 30px;
+}
+
+.bloggerContainer .dashboardContainer .commentDashboard div p {
+  margin: 0;
+}
+
+.bloggerContainer .dashboardContainer .commentDashboard div form {
+  margin: 0 auto;
+}
+
+.bloggerContainer .dashboardContainer .commentDashboard div form input {
+  border: none;
+  background-color: transparent;
+  color: #ec334b;
+  margin: 0 auto;
+}
+
 @media only screen and (min-width: 768px) {
   .navbar .container div form {
     width: 40%;
@@ -463,6 +544,12 @@ body {
   }
   .mailContainer {
     width: 60%;
+  }
+  .login {
+    width: 20%;
+  }
+  .dashboardContainer {
+    width: 40%;
   }
 }
 /*# sourceMappingURL=styles.css.map */

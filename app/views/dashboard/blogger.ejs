@@ -1,37 +1,32 @@
 <%- include("../partials/header"); -%>
 
-<div class="container blog-container">
-  <form action="/dashboard/compose" method="POST">
-    <button class="btn btn-primary">COMPOSE</button>
-  </form>
+<div class="bloggerContainer">
+  <button class="btn btn-primary"><a href="/dashboard/compose">COMPOSE</a></button>
 
   <% posts.forEach(function(post){ %>
-    <div class="container editContainer">
-      <div style="display: flex; flex-direction: row;">
-        <p style="margin-right: 10px;" class="col"><%= post.title %>,</p>
-        <form class="idForEditForm" action="/posts/edit" method="POST">
-          <textarea name="idForEdit" readonly><%= post.id %></textarea>
-          <input type="submit" class="btn btn-primary" value="EDIT" />
-        </form>
-        <form action="/posts/delete" method="POST">
-          <textarea style="display: none;" name="idForDelete" readonly><%= post.id %></textarea>
-          <input type="submit" class="btn btn-danger" value="DELETE" />
-        </form>
-      </div>
-      <div class="commentDashboard">
-        <p>Comentários:</p>
-        <%comments.forEach(function(comment) {%>
-          <%if(comment.postId === post.id) {%>
-            <div style="display: flex; flex-direction: row;">
-              <p><%=comment.comment.substring(0, 50) + " ..."%></p>
-              <form action="/comment/delete" method="POST">
-                <textarea style="display: none;" name="commentForDelete" readonly><%= comment.id %></textarea>
-                <input type="submit" class="btn btn-danger" value="X" />
-              </form>
-            </div>
-        <%}})%>
+  <div class="container dashboardContainer">
+    <div class="mainDashboard">
+      <a class="postDashTitle" href="/posts/<%=post.id%>"><%= post.title %></a>
+      <p><%=post.date%></p>
+      <div>
+        <a class="postInteract" href="/posts/edit/<%=post.id%>">Editar</a>
+        <a class="postInteract" href="/posts/delete/<%=post.id%>">Deletar</a>
       </div>
     </div>
+    <div class="commentDashboard">
+      <p>Comentários:</p>
+      <%comments.forEach(function(comment) {%>
+      <%if(comment.postId === post.id) {%>
+      <div>
+        <p><%=comment.comment.substring(0, 20) + " ..."%></p>
+        <form action="/comment/delete" method="POST">
+          <textarea style="display: none;" name="commentForDelete" readonly><%= comment.id %></textarea>
+          <input type="submit" value="Delete" />
+        </form>
+      </div>
+      <%}})%>
+    </div>
+  </div>
   <% }); %>
 </div>
 

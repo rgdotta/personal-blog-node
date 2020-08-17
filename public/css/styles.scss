@@ -149,11 +149,12 @@ body {
     a {
       text-decoration: none;
       color: #454343;
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
+}
+
+.postInteraction:hover {
+  text-decoration: underline;
 }
 
 .searchTitle {
@@ -419,6 +420,82 @@ body {
   }
 }
 
+.bloggerContainer {
+  width: 80%;
+  @extend %flex-column;
+  justify-content: center;
+  margin: auto;
+  .btn {
+    @extend %submit-btn;
+    margin: 50px auto 50px auto;
+    a {
+      text-decoration: none;
+      color: #fffefe;
+    }
+  }
+  .dashboardContainer {
+    border: 1px solid rgba(69, 67, 67, 0.3);
+    border-radius: 7px;
+    margin: 20px auto;
+    padding: 10px;
+    -webkit-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+    -moz-box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+    box-shadow: 3px 4px 6px -4px rgba(168, 158, 168, 1);
+    .mainDashboard {
+      @extend %flex-column;
+      .postDashTitle {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      div {
+        @extend %flex-row;
+        a {
+          margin: 5px 5px 5px 10px;
+          text-decoration: none;
+          border: 1px solid rgba(69, 67, 67, 0.6);
+          border-radius: 5px;
+          padding: 5px;
+          box-shadow: 0 8px rgb(194, 193, 193);
+        }
+        a:hover {
+          background-color: #ee5db6;
+          color: #fffefe;
+        }
+        a:active {
+          background-color: #ee5db6;
+          color: #fffefe;
+          box-shadow: 0 8px rgb(194, 193, 193);
+        }
+      }
+      a {
+        color: #454343;
+      }
+      p {
+        font-size: 12px;
+        margin-top: 0;
+      }
+    }
+    .commentDashboard {
+      div {
+        @extend %flex-row;
+        height: 30px;
+        p {
+          margin: 0;
+        }
+        form {
+          margin: 0 auto;
+          input {
+            border: none;
+            background-color: transparent;
+            color: #ec334b;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .navbar {
     .container {
@@ -443,5 +520,11 @@ body {
   }
   .mailContainer {
     width: 60%;
+  }
+  .login {
+    width: 20%;
+  }
+  .dashboardContainer {
+    width: 40%;
   }
 }
